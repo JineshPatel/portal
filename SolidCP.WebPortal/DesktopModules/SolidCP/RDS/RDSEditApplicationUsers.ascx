@@ -1,0 +1,102 @@
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="RDSEditApplicationUsers.ascx.cs" Inherits="SolidCP.Portal.RDS.RDSEditApplicationUsers" %>
+<%@ Register Src="../UserControls/SimpleMessageBox.ascx" TagName="SimpleMessageBox" TagPrefix="scp" %>
+<%@ Register Src="../UserControls/EnableAsyncTasksSupport.ascx" TagName="EnableAsyncTasksSupport" TagPrefix="scp" %>
+<%@ Register Src="UserControls/RDSCollectionUsers.ascx" TagName="CollectionUsers" TagPrefix="scp"%>
+<%@ Register Src="UserControls/RDSCollectionTabs.ascx" TagName="CollectionTabs" TagPrefix="scp" %>
+<%@ Register TagPrefix="scp" TagName="CollapsiblePanel" Src="../UserControls/CollapsiblePanel.ascx" %>
+<%@ Register Src="../UserControls/ItemButtonPanel.ascx" TagName="ItemButtonPanel" TagPrefix="scp" %>
+<script type="text/javascript" src="/JavaScript/jquery.min.js?v=1.4.4"></script>
+
+<scp:EnableAsyncTasksSupport id="asyncTasks" runat="server"/>
+
+<div id="ExchangeContainer">
+	<div class="Module">
+		<div class="Left">
+		</div>
+		<div class="Content">
+			<div class="Center">
+                <div class="Title">
+					<asp:Image ID="imgEditRDSCollection" SkinID="EnterpriseStorageSpace48" runat="server" />
+					<asp:Localize ID="locTitle" runat="server" meta:resourcekey="locTitle" Text="Edit RDS Collection"></asp:Localize>
+                    -
+					<asp:Literal ID="litCollectionName" runat="server" Text="" />
+				</div>
+				<div class="FormContentRDS">
+				    <scp:SimpleMessageBox id="SimpleMessageBox1" runat="server" />
+                    <div class="widget">
+    <div class="widget-header clearfix">
+                    <scp:CollectionTabs id="tabs" runat="server" SelectedTab="rds_collection_edit_apps" />
+                    </div>
+    <div class="widget-content tab-content">
+                    <scp:CollapsiblePanel id="secRdsApplicationEdit" runat="server"
+                        TargetControlID="panelRdsApplicationEdit" meta:resourcekey="secRdsApplicationEdit" Text="">
+                    </scp:CollapsiblePanel>		
+                    
+                    <asp:Panel runat="server" ID="panelRdsApplicationEdit">                                                
+                        <div style="padding: 10px;">
+                            <table>
+                                <tr>
+                                    <td class="FormLabel150" colspan="2" style="width: 130px;">
+                                        <asp:Localize ID="locLblApplicationName" runat="server" meta:resourcekey="locLblApplicationName" Text="Application Name"/>
+                                    </td>
+                                    <td>
+                                        <asp:TextBox ID="txtApplicationName" runat="server" CssClass="TextBox300" />
+                                        <asp:RequiredFieldValidator ID="valApplicationName" runat="server" ErrorMessage="*" ControlToValidate="txtApplicationName" ValidationGroup="SaveRDSCollection"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">
+                                        <asp:RadioButton ID="chNotAllow" GroupName="commandLineParameters" meta:resourcekey="chNotAllow" runat="server" Text=""/>                                        
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">
+                                        <asp:RadioButton ID="chAllowAny" GroupName="commandLineParameters" meta:resourcekey="chAllowAny" runat="server" Text=""/>                                        
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td  style="width:40px;"/>
+                                    <td colspan="2">
+                                        <asp:Localize ID="locAllowAny" runat="server" meta:resourcekey="locAllowAny" Text=""/>                                        
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">
+                                        <asp:RadioButton ID="chAllow" meta:resourcekey="chAllow" GroupName="commandLineParameters" runat="server" Text=""/>                                        
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="FormLabel150" colspan="2" style="width: 130px;">
+                                        <asp:Localize ID="locCommandLine" runat="server" meta:resourcekey="locCommandLine" Text="Command-line parameters"/>
+                                    </td>
+                                    <td>
+                                        <asp:TextBox ID="txtCommandLine" runat="server" CssClass="TextBox300" Enabled="False" />                                        
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>                            
+                    </asp:Panel>
+                    					
+                    <scp:CollapsiblePanel id="secRdsApplicationUsers" runat="server"
+                        TargetControlID="panelRdsApplicationUsers" meta:resourcekey="secRdsApplicationUsers" Text="">
+                    </scp:CollapsiblePanel>		
+                    
+                    <asp:Panel runat="server" ID="panelRdsApplicationUsers">                                                
+                        <div style="padding: 10px;">
+                            <scp:CollectionUsers id="users" runat="server" />
+                        </div>                            
+                    </asp:Panel>
+                    <div class="FormFooterClean">
+                        <asp:Button id="btnSave" runat="server" Text="Save Changes" CssClass="Button1" meta:resourcekey="btnSave" 
+                            OnClick="btnSave_Click" OnClientClick="ShowProgressDialog('Updating ...');"></asp:Button>
+                        <asp:Button id="btnSaveExit" runat="server" Text="Save Changes and Exit" CssClass="Button1" meta:resourcekey="btnSaveExit" 
+                            OnClick="btnSaveExit_Click" OnClientClick="ShowProgressDialog('Updating ...');"></asp:Button>
+                        <asp:Button id="btnExit" runat="server" Text="Back to Applications List" CssClass="Button1" meta:resourcekey="btnExit" 
+                            OnClick="btnExit_Click" OnClientClick="ShowProgressDialog('Loading ...');"></asp:Button>
+			        </div>
+				</div>	
+                </div>	</div>		
+			</div>
+		</div>
+	</div>
+</div>
