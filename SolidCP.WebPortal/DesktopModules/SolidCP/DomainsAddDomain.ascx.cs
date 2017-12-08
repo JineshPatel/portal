@@ -35,7 +35,6 @@ using System.Web;
 using SolidCP.EnterpriseServer;
 using System.Collections.Generic;
 using SolidCP.Portal.UserControls;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Net;

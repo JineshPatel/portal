@@ -240,3 +240,4 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+/SolidCP.Server/Properties/PublishProfiles/test1.pubxml

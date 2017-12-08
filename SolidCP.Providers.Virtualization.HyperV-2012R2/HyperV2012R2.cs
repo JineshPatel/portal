@@ -454,6 +454,11 @@ namespace SolidCP.Providers.Virtualization
                 Command cmd = new Command(cmdTxt);
 
                 cmd.Parameters.Add("Name", vm.Name);
+                if (newState == VirtualMachineRequestedState.Reset)
+                {
+                    cmd.Parameters.Add("Force");
+                }
+               
                 //cmd.Parameters.Add("AsJob");
                 paramList.ForEach(p => cmd.Parameters.Add(p));
 

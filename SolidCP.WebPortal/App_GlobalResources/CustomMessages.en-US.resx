@@ -162,4 +162,7 @@
   <data name="WEB_GET_SITE|Unable to connect to the remote server|A connection attempt failed because the connected party did not properly respond after a period of time" xml:space="preserve">
     <value>Cannot connect to SolidCP Server Component, please start it from IIS Manager or contact us for further support.</value>
   </data>
+  <data name="SQL_RESTORE_DATABASE|Server was unable to process request|That version is incompatible with this server" xml:space="preserve">
+    <value>The backup you are trying to restore is from a newer version of MS SQL. Please backup your database with lower version compatibility and then restore it.</value>
+  </data>
 </root>
